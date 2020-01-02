@@ -1,4 +1,4 @@
-padding_fun <- function(df, separator, col_to_split, col_to_pad, width, side, pad, ...) {
+padding_fun <- function(df, col_to_split, col_to_pad, width, side, pad, separator, ...) {
   require(dplyr)
   require(tidyr)
   require(stringr)
