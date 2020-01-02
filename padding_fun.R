@@ -1,11 +1,13 @@
-padding_fun <- function(df, separator, sep_into, col_to_pad, new_col_name, width, side, pad, ...) {
+padding_fun <- function(df, separator, col_to_split, col_to_pad, width, side, pad, ...) {
   require(dplyr)
   require(tidyr)
   require(stringr)
+  assertthat::assert_that(is.numeric(col_to_pad))
+  tmp_col_to_pad = ifelse(test = col_to_pad == 1, yes = "tmp_col1", no = "tmp_col2")
   split_sep = paste0("\\", separator)
   n_cols = ncol(df)
   df %>% 
-    separate(sep = split_sep, ...) %>% 
-    dplyr::mutate({{col_to_pad}} := str_pad(string = {{col_to_pad}}, width = width, side = side, pad = pad)) %>% 
-    unite(col = {{new_col_name}}, n_cols:(n_cols + 1), sep = separator)
+    separate(sep = split_sep, col = {{col_to_split}}, into = c("tmp_col1", "tmp_col2"), ...) %>% 
+    dplyr::mutate({{tmp_col_to_pad}} := str_pad(string = .data[[tmp_col_to_pad]], width = width, side = side, pad = pad)) %>% 
+    unite(col = {{col_to_split}}, n_cols:(n_cols + 1), sep = separator)
 }
