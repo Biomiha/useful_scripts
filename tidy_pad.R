@@ -1,6 +1,5 @@
-padding_fun <- function(df, col_to_split, col_to_pad, width, side, pad, separator, ...) {
+padding_fun <- function(df, col_to_split, col_to_pad = c(1, 2), width, side, pad, separator, ...) {
   require(tidyverse)
-  assertthat::assert_that(is.numeric(col_to_pad))
   tmp_col_to_pad = ifelse(test = col_to_pad == 1, yes = "tmp_col1", no = "tmp_col2")
   split_sep = paste0("\\", separator)
   n_cols = ncol(df)
