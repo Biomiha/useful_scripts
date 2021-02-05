@@ -131,7 +131,7 @@ prepData <- function (x, panel = NULL, md = NULL, features = NULL, transform = T
     icd <- DataFrame(t(es[!is_mass, , drop = FALSE]), check.names = FALSE)
     colnames(icd) <- rownames(es)[!is_mass]
     icd$reducedDims <- icd$altExps <- foo
-    colData(sce) <- icd
+    colData(sce) <- as(cbind(colData(sce), icd), Class = "DataFrame")
     sce <- sce[is_mass, ]
   }
   if (transform) 
