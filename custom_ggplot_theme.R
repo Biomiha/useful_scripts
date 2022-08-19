@@ -8,6 +8,7 @@ theme_set(theme_bw() +
                   legend.title = element_text(size = 14), 
                   legend.text = element_text(size = 12),
                   strip.text.x = element_text(size = 14),
+                  strip.text.y = element_text(size = 14),
                   plot.title = element_text(hjust = 0, size = 16),
                   plot.subtitle = element_text(hjust = 0, size = 12),
                   legend.justification="left"))
