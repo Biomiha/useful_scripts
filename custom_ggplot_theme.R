@@ -1,4 +1,5 @@
 # set ggplot theme
+require("ggplot2")
 theme_set(theme_bw() +
             theme(axis.line = element_blank(),
                   axis.title.x = element_text(margin = margin(t = 10, r = 0, b = 0, l = 0), size = 14),
