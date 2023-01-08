@@ -50,7 +50,7 @@ wsp_to_gatingset <- function(wsp_file) {
     wsp_file_replaced <- read_lines(wsp_file) |>
       str_replace_all(pattern = string_to_replace, replacement = string_to_replace_with)
     wsp_file_replaced_name <- wsp_file |>
-      str_replace(pattern = ".wsp", replacement = ".2.wsp")
+      str_replace(pattern = ".wsp", replacement = ".new.wsp")
 
     # This will write a new wsp file in order to not replace the old wsp
     write_lines(x = wsp_file_replaced, file = wsp_file_replaced_name)
