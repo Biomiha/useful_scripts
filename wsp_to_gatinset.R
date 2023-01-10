@@ -1,5 +1,6 @@
 wsp_to_gatingset <- function(wsp_file) {
   require(cytoverse)
+  require(CytoExploreR)
   require(tidyverse)
   require(cytoqc)
   ws <- open_flowjo_xml(file = wsp_file, sample_names_from = "sampleNode")
