@@ -14,9 +14,8 @@ wsp_to_gatingset <- function(wsp_file) {
     str_remove(pattern = "File location:  ") |>
     dirname()
 
-  Patient_id <- Parent_dir |> str_extract(pattern = "[A-Z][A-Z][0-9][0-9][0-9]-[A-Z][A-Z]-[0-9][0-9]-[0-9][0-9][0-9]")
   # List fcs files in the folder. Additional regex can be used to only read in the relevant .fcs files
-  rawfiles <- list.files(Parent_dir, ".fcs$", full.names = TRUE) %>%
+  rawfiles <- list.files(Parent_dir, ".fcs$", full.names = TRUE) |>
     grep(pattern = "QC", value = TRUE)
 
   # The new container class is now called cytoset. You load the cytoset into R from the list of .fcs files
