@@ -15,6 +15,6 @@ ggplot_png_to_pdf <- function(ggplot_object, out_name = "plot.pdf", device = "pn
       str_c(., ".png")
   }
   walk(.x = seq_along(file_names), .f = ~ggsave(filename = file_names[[.x]], path = tmp_dir, plot = ggplot_object[[.x]], device = device, height = height, width = width, units = units, dpi = dpi))
-  try(image_write(image_read(list.files(tmp_dir, pattern = ".png", full.names = TRUE)), format = "pdf", out_name), silent = TRUE)
+  image_write(image_read(list.files(tmp_dir, pattern = ".png", full.names = TRUE)), format = "pdf", out_name)
   try(fs::file_delete(list.files(path = tmp_dir, pattern = ".png", full.names = TRUE)), silent = TRUE)
 }
