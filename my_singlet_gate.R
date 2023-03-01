@@ -8,4 +8,4 @@ my_singlet_gate_fun <- function(fr, pp_res = NULL, channels = c("FSC-A", "FSC-H"
   polygonGate(.gate = exprs_mat[hpts,], filterId = "singlets")
 }
 require(openCyto)
-registerPlugins(my_singlet_gate_fun, "my_singlet_gate")
+register_plugins(my_singlet_gate_fun, "my_singlet_gate")
