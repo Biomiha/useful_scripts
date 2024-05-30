@@ -90,13 +90,16 @@ read_prism <- function(path, table = 1, use_colnames = FALSE, ...) {
   
   stopifnot(identical(sheet_json$title, table))
   table_id <- sheet_json$table$uid
-  xDataSet <- sheet_json$table$xDataSet
-  x_colname <- list.files(temp_dir, recursive = TRUE, full.names = TRUE) |> 
-    grep(pattern = "data", value = TRUE) |> 
-    grep(pattern = "sets", value = TRUE) |> 
-    grep(pattern = xDataSet, value = TRUE) |> 
-    fromJSON() |> 
-    _$title
+  
+  if(!is.null(sheet_json$table$xDataSet)) {
+    xDataSet <- sheet_json$table$xDataSet
+    x_colname <- list.files(temp_dir, recursive = TRUE, full.names = TRUE) |> 
+      grep(pattern = "data", value = TRUE) |> 
+      grep(pattern = "sets", value = TRUE) |> 
+      grep(pattern = xDataSet, value = TRUE) |> 
+      fromJSON() |> 
+      _$title
+  } else x_colname <- NULL
   
   yDataSets <- sheet_json$table$dataSets
   search_y <- function(x) {
